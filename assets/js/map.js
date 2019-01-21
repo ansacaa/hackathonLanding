@@ -4,7 +4,7 @@
 
 function initMap() {
     if(document.getElementById('map') === null || typeof google == 'undefined') return;
-    
+    console.log("Map");    
     var cntr = new google.maps.LatLng(19.020000,-98.244);
     var mkr = new google.maps.LatLng(19.019700,-98.244584);
 
