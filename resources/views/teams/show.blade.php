@@ -35,7 +35,17 @@
                         </tr>
                         @else
                         <tr>
-                            <td><a href="{{ route('teams.approve', $team->id) }}" class="btn btn-success">Aprobar</a></td>
+                            <td>
+                                <a class="btn btn-success" href="{{ route('teams.approve', $team->id) }}"
+                                    onclick="event.preventDefault(); document.getElementById('approve-form').submit();">
+                                    Aprobar
+                                </a>
+                    
+                                <form id="approve-form" action="{{ route('teams.approve', $team->id) }}" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('PUT')
+                                </form>
+                            </td>
                             <td></td>
                         </tr>
                         @endif
@@ -44,11 +54,12 @@
                             <td>
                                 <a class="btn btn-danger" href="{{ route('teams.delete', $team->id) }}"
                                     onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
-                                Eliminar
+                                    Eliminar
                                 </a>
                     
                                 <form id="delete-form" action="{{ route('teams.delete', $team->id) }}" method="POST" style="display: none;">
                                     @csrf
+                                    @method('DELETE')
                                 </form>
                             </td>
                         </tr>

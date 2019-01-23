@@ -22,7 +22,7 @@ class CreatePeopleTable extends Migration
             $table->timestamps();
 
             $table->integer('team_id')->unsigned();
-            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Team;
 use App\Person;
 use Validator;
+use Carbon\Carbon;
 
 class TeamController extends Controller
 {
@@ -47,7 +48,11 @@ class TeamController extends Controller
     }
 
     public function approve(Team $team) {
+        $team->approved_at = Carbon::now();
+        $team->save();
 
+        session()->flash('success', 'Equipo aprobado.');
+        return redirect(route('teams.show', $team->id));
     }
 
     public function confirm($uuid) {
@@ -57,7 +62,7 @@ class TeamController extends Controller
     public function delete(Team $team) {
         $team->delete();
 
-        session()->flash('message', 'Equipo eliminado correctamente.');
+        session()->flash('success', 'Equipo eliminado correctamente.');
         return redirect(route('teams'));
     }
 }

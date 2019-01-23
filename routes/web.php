@@ -24,9 +24,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/equipos', 'TeamController@index')->name('teams');
     Route::get('/equipos/{team}', 'TeamController@show')->name('teams.show');
     Route::put('/equipos/{team}', 'TeamController@update')->name('teams.update');
-    Route::put('/equipos/{team}/approve', 'TeamController@update')->name('teams.approve');
-    Route::put('/equipos/{team}/comment', 'TeamController@update')->name('teams.comment');
-    Route::delete('/equipos/{team}', 'TeamController@destroy')->name('teams.delete');
+    Route::put('/equipos/{team}/approve', 'TeamController@approve')->name('teams.approve');
+    Route::delete('/equipos/{team}', 'TeamController@delete')->name('teams.delete');
 });
 
 Route::get('{any}', function($any) {
