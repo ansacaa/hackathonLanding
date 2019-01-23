@@ -21,6 +21,7 @@ class CreateTeamsTable extends Migration
             $table->string('email', 255);
             $table->uuid('code')->nullable()->default(null);
             $table->datetime('confirmed_at')->nullable()->default(null);
+            $table->datetime('approved_at')->nullable()->default(null);
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@ class Team extends Model
     use Notifiable;
     
     protected $fillable = ['name', 'phone', 'email'];
-    protected $dates = ['confirmed_at'];
+    protected $dates = ['confirmed_at', 'approved_at'];
     protected $hidden = ['code'];
 
     public function people() {
