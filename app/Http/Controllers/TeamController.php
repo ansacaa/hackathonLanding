@@ -7,6 +7,8 @@ use App\Team;
 use App\Person;
 use Validator;
 use Carbon\Carbon;
+use App\Notifications\EmailVerificationNot;
+use Ramsey\Uuid\Uuid;
 
 class TeamController extends Controller
 {
@@ -17,11 +19,24 @@ class TeamController extends Controller
     }
 
     public function create() {
-
+        return view('teams.create');
     }
 
     public function store(Request $request) {
+        $validator = Validator::make($request->all(), Team::$rules);
 
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+        
+        $team = Team::create($request->all());
+        $team->code = Uuid::uuid1();
+        Person::createTeam($request, $team);
+
+        $team->notify(new EmailVerificationNot($team));
+
+        session()->flash('success', 'Te has registrado exitosamente.');
+        return redirect(route('index'));
     }
 
     public function show(Team $team) {

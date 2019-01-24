@@ -56,13 +56,11 @@
   <link id="color-scheme" href="{{ asset('assets/css/colors/default.css') }}" rel="stylesheet">
 </head>
 
-<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60" style="background-color: black;">
   <main>
     <div class="page-loader">
       <div class="loader">Loading...</div>
     </div>
-
-    
 
     @include('sections.nav')
 

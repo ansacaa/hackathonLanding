@@ -1,5 +1,5 @@
 <!-- Navigation bar -->
-<nav class="navbar navbar-custom navbar-transparent navbar-fixed-top one-page" role="navigation">
+<nav class="navbar navbar-custom @if(Route::currentRouteName() == 'index'){{ 'navbar-transparent' }}@endif navbar-fixed-top one-page" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse">
