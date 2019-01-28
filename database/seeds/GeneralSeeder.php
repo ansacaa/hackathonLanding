@@ -18,7 +18,7 @@ class GeneralSeeder extends Seeder
         Team::create([
             'name' => 'Gecko1',
             'phone' => '2224587898',
-            'email' => '2245784589',
+            'email' => 'gecko1@test.com',
             'code' => Uuid::uuid1(),
             'confirmed_at' => Carbon::now(),
             'approved_at' => Carbon::now()
@@ -35,7 +35,7 @@ class GeneralSeeder extends Seeder
         Team::create([
             'name' => 'Gecko2',
             'phone' => '2224587898',
-            'email' => '2245784589',
+            'email' => 'gecko2@test.com',
             'code' => Uuid::uuid1(),
             'confirmed_at' => Carbon::now()
         ]);
@@ -51,7 +51,7 @@ class GeneralSeeder extends Seeder
         Team::create([
             'name' => 'Gecko3',
             'phone' => '2224587898',
-            'email' => '2245784589',
+            'email' => 'gecko3@test.com',
             'code' => Uuid::uuid1(),
         ]);
 

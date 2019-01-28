@@ -7,12 +7,15 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Team;
+use QRCode;
+use Illuminate\Support\Facades\Storage;
 
-class EmailVerificationNot extends Notification
+class ApprovalConfirmationNotification extends Notification
 {
     use Queueable;
 
     protected $team;
+
     /**
      * Create a new notification instance.
      *
@@ -42,16 +45,17 @@ class EmailVerificationNot extends Notification
      */
     public function toMail($notifiable)
     {
+        Storage::put('codes/'.$this->team->code.'.png' ,QRCode::text(url('/asistencia/'.$this->team->code))->png());
         return (new MailMessage)
             ->greeting('¡Hola!')
-            ->line('Los orgaizadores del Hack Puebla 2019 te damos la bienvenida.')
+            ->line('.')
             ->line('Recuerda estar al pendiente de información que publiquemos en nuestras redes sociales.')
             ->line('Para terminar tu solicitud de registro, por favor da click en botón de abjo. Una vez verificado tu correo, podremos aprobar tu solicitud.')
-            ->action('Verificar correo', url('/confirmar/'.$this->team->code))
+            ->line('<img src="'.$this->team->code.'.png"></img>')
             ->line('Cuando tu solicitud sea aprobada, recibirás un correo confirmación, este correo será tu ticket de entrada al evento.')           
             ->line('¡Gracias!')
             ->salutation('Nos vemos,');
-    }   
+    }
 
     /**
      * Get the array representation of the notification.
