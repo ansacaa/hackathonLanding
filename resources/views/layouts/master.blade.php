@@ -87,7 +87,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <p class="copyright font-alt">&copy; 2019&nbsp;<a href="index.html">SAITCPuebla</a>, All Rights Reserved</p>
+            <p class="copyright font-alt">&copy; 2019&nbsp;<a href="https://www.facebook.com/SAITCPuebla/" target="_blank">SAITCPuebla</a>, All Rights Reserved</p>
           </div>
           <div class="col-sm-6">
           </div>
