@@ -15,7 +15,7 @@
 
             <ul class="price-details">
                 <li>
-                <p class="module-subtitle">Consigue un equipo de 4 personas.</p>
+                <p class="module-subtitle">Consigue otras 3 personas para formar un equipo de 4.</p>
                 </li>
                 <li>Si necesitas ayuda, ¡contáctanos!</li>
             </ul>
@@ -31,7 +31,7 @@
                 <li>
                 <p class="module-subtitle">Inscríbete a partir del 31 de enero.</p>
                 </li>
-                <li>Mantente al tanto de nustras actualizaciones.</li>
+                <li>Mantente al tanto de nuestras actualizaciones.</li>
             </ul>
             </div>
         </div>
@@ -61,7 +61,7 @@
                 <li>
                 <p class="module-subtitle">¡Asiste al Hack Puebla el 29 de marzo y diviértete!</p>
                 </li>
-                <li>Habrán muchos premios y actividades.</li>
+                <li>Habrá muchos premios y actividades.</li>
             </ul>
             </div>
         </div>

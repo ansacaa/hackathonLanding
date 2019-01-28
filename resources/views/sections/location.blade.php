@@ -20,7 +20,7 @@
             <div class="col-sm-4 col-sm-offset-4">
                 <div class="testimonial-author">
                 <div class="testimonial-caption font-alt">
-                    <div class="testimonial-title">Avenida Atlixcáyotl 5718, Reserva Territorial Atlixcáyotl, 72453
+                    <div class="testimonial-title">Vía Atlixcáyotl 5718, Reserva Territorial Atlixcáyotl, 72453
                     Puebla, Pue.</div>
                 </div>
                 </div>

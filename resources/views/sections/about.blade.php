@@ -37,7 +37,7 @@
                 <div class="features-item">
                     <div class="features-icon"><span class="glyphicon glyphicon-exclamation-sign"></span></div>
                     <h3 class="features-title font-alt">No trabajes desde antes</h3>
-                    <p>Recuerden que no podrán utilizar código o prototipos de cualquier tipo que hayan creado antes
+                    <p>Recuerda que no podrás utilizar código o prototipos de cualquier tipo que hayas creado antes
                     del hack.</p>
                 </div>
             </div>
