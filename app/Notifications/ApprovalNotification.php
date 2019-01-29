@@ -7,12 +7,14 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Team;
+use QrCode;
 
-class EmailVerificationNot extends Notification
+class ApprovalNotification extends Notification
 {
     use Queueable;
 
     protected $team;
+
     /**
      * Create a new notification instance.
      *
@@ -42,16 +44,18 @@ class EmailVerificationNot extends Notification
      */
     public function toMail($notifiable)
     {
+        $url = url('/asistencia/'.$this->team->code);
         return (new MailMessage)
-            ->greeting('¡Hola!')
-            ->line('Los orgaizadores del Hack Puebla 2019 te damos la bienvenida.')
-            ->line('Recuerda estar al pendiente de información que publiquemos en nuestras redes sociales.')
-            ->line('Para terminar tu solicitud de registro, por favor da click en botón de abjo. Una vez verificado tu correo, podremos aprobar tu solicitud.')
-            ->action('Verificar correo', url('/confirmar/'.$this->team->code))
-            ->line('Cuando tu solicitud sea aprobada, recibirás un correo confirmación, este correo será tu ticket de entrada al evento.')           
+            ->greeting('¡Felicidades!')
+            ->line('Tu solicitud de registro al Hack Puebla 2019 ha sido aprobada.')
+            ->line('Nos vemos el 29 de marzo del presente año a las 9:00 am.')
+            ->line('Este es tu pase de entrada al evento.')
+            ->line('<img src="data:image/png;base64,'.base64_encode(QrCode::format('png')->size(500)->generate($url)).'" />')
+            ->line('Recuerda que todos los miembros del equipo deben llevar una identificación oficial el día del evento, así como tu poliza de seguro de gastos médicos mayores vigente.')  
+            ->line('Por favor, atento a la información que posteamos en <a href="https://www.facebook.com/SAITCPuebla/">Facebook</a>.')           
             ->line('¡Gracias!')
-            ->salutation('Nos vemos,');
-    }   
+            ->salutation('Nos vemos, Hack Puebla 2019');
+    }
 
     /**
      * Get the array representation of the notification.

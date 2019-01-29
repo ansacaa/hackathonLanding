@@ -27,14 +27,20 @@
                             <th scope="row">Confirmado</th>
                             <td>{{ $team->confirmed_at }}</td>
                         </tr>
+                        @else
+                        <tr>
+                            <th scope="row">Confirmado</th>
+                            <td><a class="btn btn-warning text-white" href="{{ route('teams.resend', $team->id) }}" >Reenviar correo</a></td>
+                        </tr>
                         @endif
                         @if ($team->approved_at != null)
                         <tr>
-                            <th scope="row">Aprovado</th>
+                            <th scope="row">Aprobado</th>
                             <td>{{ $team->approved_at }}</td>
                         </tr>
                         @else
                         <tr>
+                            <th scope="row">Aprobado</th>
                             <td>
                                 <a class="btn btn-success" href="{{ route('teams.approve', $team->id) }}"
                                     onclick="event.preventDefault(); document.getElementById('approve-form').submit();">
@@ -46,11 +52,9 @@
                                     @method('PUT')
                                 </form>
                             </td>
-                            <td></td>
                         </tr>
                         @endif
                         <tr>
-                            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Editar</button></td>
                             <td>
                                 <a class="btn btn-danger" href="{{ route('teams.delete', $team->id) }}"
                                     onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
@@ -62,9 +66,13 @@
                                     @method('DELETE')
                                 </form>
                             </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Editar</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
+                <td><a class="btn btn-info" href="#" onclick="window.history.back();">Regresar</a></td>
             </div>
         </div>
         <div class="col-md-8">
