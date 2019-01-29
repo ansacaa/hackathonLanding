@@ -96,6 +96,7 @@
                         @endfor
 
                         <div class="form-group">
+                            <p>Una vez que te registres, revisa tu correo para confirmar tu cuenta.</p>
                             <a class="btn btn-border-d" href="{{ route('index') }}">Regresar</a>
                             <input class="btn btn-b" type="submit" value="Enviar">
                         </div>

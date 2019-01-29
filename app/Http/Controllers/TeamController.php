@@ -32,11 +32,12 @@ class TeamController extends Controller
         
         $team = Team::create($request->all());
         $team->code = Uuid::uuid1();
+        $team->save();
         Person::createTeam($request, $team);
 
         $team->notify(new EmailVerificationNotification($team));
 
-        session()->flash('success', 'Te has registrado exitosamente.');
+        session()->flash('success', 'Te has registrado exitosamente. Busca en tu correo el mensaje de verificacion.');
         return redirect(route('index'));
     }
 
@@ -74,7 +75,27 @@ class TeamController extends Controller
     }
 
     public function confirm($uuid) {
+        $team = Team::where('code', $uuid)->get()->first();
 
+        if($team == null) {
+            session()->flash('error', 'No se encuentra el equipo especificado.');
+        }
+        else {
+            $team->confirmed_at = Carbon::now();
+            $team->save();
+
+            session()->flash('success', 'Tu correo ha sido verificado. Ahora nuestro equipo evisará tu solicitud.');
+        }
+
+        return redirect(route('index'));
+    }
+
+    public function resend(Team $team) {
+        $team->notify(new EmailVerificationNotification($team));
+
+        session()->flash('success', 'Se ha reenviado el correo de confirmación.');
+
+        return redirect()->back();
     }
 
     public function delete(Team $team) {

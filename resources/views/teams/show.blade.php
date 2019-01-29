@@ -72,7 +72,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <td><a class="btn btn-info" href="#" onclick="window.history.back();">Regresar</a></td>
+                <td><a class="btn btn-info" href="{{ route('teams') }}">Regresar</a></td>
             </div>
         </div>
         <div class="col-md-8">

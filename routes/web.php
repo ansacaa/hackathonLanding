@@ -19,6 +19,7 @@ Auth::routes(['register' => false]); // disabled registering new users
 
 Route::get('/registro', 'TeamController@create')->name('teams.create');
 Route::post('/registro', 'TeamController@store')->name('teams.store');
+Route::get('/confirmar/{uuid}', 'TeamController@confirm')->name('teams.confirm');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/equipos', 'TeamController@index')->name('teams');
