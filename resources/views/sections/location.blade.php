@@ -12,8 +12,7 @@
             </div>
             <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <blockquote class="testimonial-text font-alt">La cita será en el Centro de Convenciones del
-                Instituto Tecnológico de Monterrey Campus Puebla.</blockquote>
+                <blockquote class="testimonial-text font-alt">La cita será en el Centro de Convenciones del Tec de Monterrey en Puebla.</blockquote>
             </div>
             </div>
             <div class="row">
