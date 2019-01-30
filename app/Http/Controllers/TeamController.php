@@ -14,12 +14,18 @@ use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {
+    /**
+     * Lists the registered teams
+     */
     public function index() {
         $teams = Team::orderBy('name')->get();
 
         return view('teams.index', compact('teams'));
     }
 
+    /**
+     * Displays the registration form only if the registration date has passed
+     */
     public function create() {
         if(Carbon::now()->lessThanOrEqualTo(new Carbon('2019-02-01')) && !Auth::check()) {
             session()->flash('error' ,'Las inscripciones comienzan el primero de febrero de 2019.');
@@ -29,6 +35,10 @@ class TeamController extends Controller
         return view('teams.create');
     }
 
+    /**
+     * Creates a team, stores the members with its files
+     * assigns a uuid to the team and sends email verification notification
+     */
     public function store(Request $request) {
         $validator = Validator::make($request->all(), Team::$rules);
         
@@ -48,10 +58,16 @@ class TeamController extends Controller
         return redirect(route('index'));
     }
 
+    /**
+     * Retrieves and displays a team
+     */
     public function show(Team $team) {
         return view('teams.show', compact('team'));
     }
 
+    /**
+     * Updates the team information
+     */
     public function update(Request $request, Team $team) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:100',
@@ -71,6 +87,9 @@ class TeamController extends Controller
         return redirect(route('teams.show', $team->id));
     }
 
+    /**
+     * Approves a team, sends the approval notification
+     */
     public function approve(Team $team) {
         $team->approved_at = Carbon::now();
         $team->save();
@@ -81,6 +100,9 @@ class TeamController extends Controller
         return redirect(route('teams.show', $team->id));
     }
 
+    /**
+     * Confirms a team
+     */
     public function confirm($uuid) {
         $team = Team::where('code', $uuid)->get()->first();
 
@@ -97,6 +119,9 @@ class TeamController extends Controller
         return redirect(route('index'));
     }
 
+    /**
+     * Resends the email verification notification
+     */
     public function resend(Team $team) {
         $team->notify(new EmailVerificationNotification($team));
 
@@ -105,6 +130,9 @@ class TeamController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Deletes a team
+     */
     public function delete(Team $team) {
         $team->delete();
 
