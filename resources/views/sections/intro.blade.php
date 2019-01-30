@@ -11,14 +11,14 @@
             <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="count-item mb-sm-40">
                     <div class="count-icon"><span class=" icon-profile-male"></span></div>
-                    <h3 class="count-to font-alt" data-countto="200"></h3>
+                    <h3 class="count-to font-alt" data-countto="240"></h3>
                     <h5 class="count-title font-serif">Participantes</h5>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="count-item mb-sm-40">
                     <div class="count-icon"><span class="icon-tools"></span></div>
-                    <h3 class="count-to font-alt" data-countto="50"></h3>
+                    <h3 class="count-to font-alt" data-countto="60"></h3>
                     <h5 class="count-title font-serif">Proyectos</h5>
                 </div>
             </div>

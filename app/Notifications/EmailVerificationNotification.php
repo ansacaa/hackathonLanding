@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Team;
+use App;
 
 class EmailVerificationNotification extends Notification
 {
@@ -43,6 +44,8 @@ class EmailVerificationNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+            ->subject('Verificación de correo')
+            ->from('hackpuebla@gmail.com')
             ->greeting('¡Hola!')
             ->line('Los orgaizadores del Hack Puebla 2019 te damos la bienvenida.')
             ->line('Recuerda estar al pendiente de información que publiquemos en <a href="https://www.facebook.com/SAITCPuebla/">Facebook</a>.')
