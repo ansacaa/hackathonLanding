@@ -21,7 +21,7 @@
                         @csrf
                         <h4>Información del equipo</h4>
                         <div class="form-group">
-                            <input class="form-control input-lg @if($errors->has('name'))is-invalid @endif" type="text" name="name" id="name" max="100" placeholder="Nombre del equipo"/>
+                            <input class="form-control input-lg @if($errors->has('name'))is-invalid @endif" type="text" name="name" id="name" max="100" placeholder="Nombre del equipo" value="{{ old('name') }}"/>
                             @if($errors->has('name'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('name') }}
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input class="form-control input-lg @if($errors->has('email'))is-invalid @endif" type="email" name="email" id="email" max="255" placeholder="Correo electronico"/>
+                            <input class="form-control input-lg @if($errors->has('email'))is-invalid @endif" type="email" name="email" id="email" max="255" placeholder="Correo electronico" value="{{ old('email') }}"/>
                             @if($errors->has('email'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('email') }}
@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input class="form-control input-lg @if($errors->has('phone'))is-invalid @endif" type="text" name="phone" id="phone" max="20" placeholder="Número telefónico"/>
+                            <input class="form-control input-lg @if($errors->has('phone'))is-invalid @endif" type="text" name="phone" id="phone" max="20" placeholder="Número telefónico" value="{{ old('phone') }}"/>
                             @if($errors->has('phone'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('phone') }}
@@ -54,7 +54,7 @@
                             <div>
                                 <h5>@if($i==1){{'Capitán'}}@else{{'Integrante '.$i}}@endif</h5>
                                 <div class="form-group">
-                                    <input class="form-control input-lg @if($errors->has('names.'.$i))is-invalid @endif" type="text" name="names[{{$i}}]" max="100" placeholder="Nombre del capitán"/>
+                                    <input class="form-control input-lg @if($errors->has('names.'.$i))is-invalid @endif" type="text" name="names[{{$i}}]" max="100" placeholder="Nombre del capitán" value="{{ old('names.'.$i) }}"/>
                                     @if($errors->has('names.'.$i))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('names.'.$i) }}
@@ -62,7 +62,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control input-lg @if($errors->has('schools.'.$i))is-invalid @endif" type="text" name="schools[{{$i}}]" max="100" placeholder="Escuela"/>
+                                    <input class="form-control input-lg @if($errors->has('schools.'.$i))is-invalid @endif" type="text" name="schools[{{$i}}]" max="100" placeholder="Escuela" value="{{ old('schools.'.$i) }}"/>
                                     @if($errors->has('schools.'.$i))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('schools.'.$i) }}
@@ -72,7 +72,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Fecha de nacimiento</label>
-                                        <input class="form-control input-lg @if($errors->has('birthdates.'.$i))is-invalid @endif" type="date" name="birthdates[{{$i}}]" min="12/31/2002" placeholder="Fecha de nacimiento"/>
+                                        <input class="form-control input-lg @if($errors->has('birthdates.'.$i))is-invalid @endif" type="date" name="birthdates[{{$i}}]" min="12/31/2002" placeholder="Fecha de nacimiento" value="{{ old('birthdates.'.$i) }}"/>
                                         @if($errors->has('birthdates.'.$i))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('birthdates.'.$i) }}
@@ -82,8 +82,8 @@
                                 </div>
                                 <div class="col-md-6" style="margin-bottom: 25px;">
                                     <div class="form-group">
-                                        <label>Archivo que acreedita estatus de estudiante</label>
-                                        <input class="form-control input-lg @if($errors->has('files.'.$i))is-invalid @endif" type="file" name="files[{{$i}}]" min="12/31/2002" placeholder="Fecha de nacimiento"/>
+                                        <label>Documento que acreedita estatus de estudiante</label>
+                                        <input class="form-control input-lg @if($errors->has('files.'.$i))is-invalid @endif" type="file" name="files[{{$i}}]" min="12/31/2002" placeholder="Documento" value="{{ old('files.'.$i) }}"/>
                                         <p>Archivo pdf de máximo 3MB</p>
                                         @if($errors->has('files.'.$i))
                                             <div class="invalid-feedback">

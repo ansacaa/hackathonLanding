@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Notifications\EmailVerificationNotification;
 use App\Notifications\ApprovalNotification;
 use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {
@@ -20,6 +21,11 @@ class TeamController extends Controller
     }
 
     public function create() {
+        if(Carbon::now()->lessThanOrEqualTo(new Carbon('2019-02-01')) && !Auth::check()) {
+            session()->flash('error' ,'Las inscripciones comienzan el primero de febrero de 2019.');
+            return redirect(route('index'));
+        }
+
         return view('teams.create');
     }
 
@@ -27,7 +33,8 @@ class TeamController extends Controller
         $validator = Validator::make($request->all(), Team::$rules);
         
         if($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput($request);
+            session()->flash('error', 'Revisa el formulario.');
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
         
         $team = Team::create($request->all());

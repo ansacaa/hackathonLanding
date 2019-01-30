@@ -84,7 +84,7 @@
                             <th scope="col">Nombre</th>
                             <th scope="col">Edad</th>
                             <th scope="col">Institución</th>
-                            <th scope="col">Archivo</th>
+                            <th scope="col">Documento</th>
                         </tr>
                     </thead>
                     <tbody>
