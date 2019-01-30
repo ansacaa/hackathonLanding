@@ -65,5 +65,6 @@
 
     @include('sections.success')
     @include('sections.warning')
+    @include('sections.error')
   </body>
 </html>

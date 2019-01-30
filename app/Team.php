@@ -24,7 +24,7 @@ class Team extends Model
             'files' => 'required|array|size:4',
             'names.*' => 'required|string|max:100',
             'schools.*' => 'required|string|max:100',
-            'birthdates.*' => 'required|date|before:2004-31-12|after:1950-31-12',
+            'birthdates.*' => 'required|date|before:2005-01-01|after:1950-01-01',
             'files.*' => 'required|file|mimes:pdf|max:3000'
     ];
 

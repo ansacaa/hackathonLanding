@@ -31,6 +31,7 @@
   <meta name="msapplication-TileColor" content="#ffffff') }}">
   <meta name="msapplication-TileImage" content="{{ asset('assets/images/favicons/ms-icon-144x144.png') }}">
   <meta name="theme-color" content="#ffffff">
+  
   <!--  
     Stylesheets
     =============================================
@@ -54,6 +55,7 @@
   <!-- Main stylesheet and color file-->
   <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
   <link id="color-scheme" href="{{ asset('assets/css/colors/default.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('assets/css/pnotify.custom.min.css') }}">
 </head>
 
 <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60" style="background-color: black;">
@@ -115,6 +117,11 @@
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBsrDSvsKz7rkIy5_Z_Uq1u7X7ghpgyIM&callback=initMap" type="text/javascript"></script>
   <script src="{{ asset('assets/js/main.js') }}"></script>
   <script src="{{ asset('assets/js/map.js') }}"></script>
+  <script src="{{ asset('assets/js/pnotify.custom.min.js') }}"></script>
+
+  @include('sections.success')
+  @include('sections.warning')
+  @include('sections.error')
 </body>
 
 </html>
