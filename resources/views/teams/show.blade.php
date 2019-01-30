@@ -54,8 +54,15 @@
                             </td>
                         </tr>
                         @endif
+                        @if ($team->assisted_at != null)
+                        <tr>
+                            <th scope="row">Ingreso</th>
+                            <td>{{ $team->assisted_at }}</td>
+                        </tr>
+                        @endif
                         <tr>
                             <td>
+                                @if($team->assisted_at == null && $team->approved_at == null)
                                 <a class="btn btn-danger" href="{{ route('teams.delete', $team->id) }}"
                                     onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
                                     Eliminar
@@ -65,6 +72,7 @@
                                     @csrf
                                     @method('DELETE')
                                 </form>
+                                @endif
                             </td>
                             <td>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Editar</button>

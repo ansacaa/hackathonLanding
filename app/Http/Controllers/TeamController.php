@@ -120,6 +120,25 @@ class TeamController extends Controller
     }
 
     /**
+     * Checks in a team
+     */
+    public function checkin($uuid) {
+        $team = Team::where('code', $uuid)->get()->first();
+
+        if($team == null) {
+            session()->flash('error', 'No se encuentra el equipo especificado.');
+            return redirect(route('index'));
+        }
+        else {
+            $team->assisted_at = Carbon::now();
+            $team->save();
+
+            session()->flash('success', 'Se ha marcado tu asistencia.');
+            return redirect(route('teams.show', $team->id));
+        }
+    }
+
+    /**
      * Resends the email verification notification
      */
     public function resend(Team $team) {
@@ -138,5 +157,11 @@ class TeamController extends Controller
 
         session()->flash('success', 'Equipo eliminado correctamente.');
         return redirect(route('teams'));
+    }
+
+    public function assistance() {
+        $teams = Team::where('approved_at', '!=', null)->get();
+
+        return view('teams.assistance', compact('teams'));
     }
 }

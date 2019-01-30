@@ -25,10 +25,13 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav">
             <li class="nav-item">
-                    <a class="nav-link" href="{{ route('index') }}">Inicio</a>
+              <a class="nav-link" href="{{ route('index') }}">Inicio</a>
             </li>
             <li class="nav-item">
-                    <a class="nav-link" href="{{ route('teams') }}">Equipos</a>
+              <a class="nav-link" href="{{ route('teams') }}">Equipos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('teams.assistance') }}">Asistencia</a>
             </li>
         </ul>
 

@@ -21,8 +21,8 @@
                     <td>{{ $team->phone }}</td>
                     <td>{{ $team->email }}</td>
                     <td>{{ $team->people->first()->name }}</td>
-                    @if($team->confirmed_at != null)<td> {{ $team->confirmed_at }} </td>@endif
-                    @if($team->approved_at != null)<td> {{ $team->approved_at }} </td>@endif
+                    @if($hide < 2)<td> {{ $team->confirmed_at }} </td>@endif
+                    @if($hide < 1)<td> {{ $team->approved_at }} </td>@endif
                     <td>
                         <a class="btn btn-info" href="{{ route('teams.show', $team->id) }}">Ver</a>
                     </td>
