@@ -35,3 +35,11 @@
 </section>
 
 @endsection
+
+@section('scripts')
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.data-table').DataTable();
+} );
+</script>
+@endsection
