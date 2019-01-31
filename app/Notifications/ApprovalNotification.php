@@ -46,6 +46,9 @@ class ApprovalNotification extends Notification
     public function toMail($notifiable)
     {
         $url = url('/asistencia/'.$this->team->code);
+        $image = QrCode::format('png')->size(500)->generate($url);
+        file_put_contents('/tmp/qrcode.png', $image);
+
         return (new MailMessage)
             ->subject('Solicitud aprobada')
             ->from(App::environment('MAIL_USERNAME'), 'hackpuebla@gmail.com')
@@ -53,11 +56,12 @@ class ApprovalNotification extends Notification
             ->line('Tu solicitud de registro al Hack Puebla 2019 ha sido aprobada.')
             ->line('Nos vemos el 29 de marzo del presente año a las 9:00 am.')
             ->line('Este es tu pase de entrada al evento.')
-            ->line('<img style="display:block;" alt="Qr" title="Qr" src="data:image/png;base64,'.base64_encode(QrCode::format('png')->size(500)->generate($url)).'" />')
+            ->line('<img style="display:block;" alt="Qr" title="Qr" src="data:image/png;base64,'.base64_encode($image).'" />')
             ->line('Recuerda que todos los miembros del equipo deben llevar una identificación oficial el día del evento, así como tu poliza de seguro de gastos médicos mayores vigente.')  
             ->line('Por favor, atento a la información que posteamos en <a href="https://www.facebook.com/SAITCPuebla/">Facebook</a>.')           
             ->line('¡Gracias!')
-            ->salutation('Nos vemos, Hack Puebla 2019');
+            ->salutation('Nos vemos, Hack Puebla 2019')
+            ->attach('/tmp/qrcode.png');
     }
 
     /**
