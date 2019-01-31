@@ -84,7 +84,7 @@
                                     <div class="form-group">
                                         <label>Documento que acreedita estatus de estudiante</label>
                                         <input class="form-control input-lg @if($errors->has('files.'.$i))is-invalid @endif" type="file" name="files[{{$i}}]" min="12/31/2002" placeholder="Documento" value="{{ old('files.'.$i) }}"/>
-                                        <p>Archivo pdf de máximo 3MB</p>
+                                        <p>Archivo pdf de máximo 3MB, se recomienda creedencial escolar vigente.</p>
                                         @if($errors->has('files.'.$i))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('files.'.$i) }}

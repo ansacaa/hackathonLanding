@@ -51,7 +51,7 @@ class EmailVerificationNotification extends Notification
             ->line('Recuerda estar al pendiente de información que publiquemos en <a href="https://www.facebook.com/SAITCPuebla/">Facebook</a>.')
             ->line('Para terminar tu solicitud de registro, por favor da click en botón de abjo. Una vez verificado tu correo, podremos aprobar tu solicitud.')
             ->action('Verificar correo', route('teams.confirm', $this->team->code))
-            ->line('Cuando tu solicitud sea aprobada, recibirás un correo confirmación, este correo será tu ticket de entrada al evento.')           
+            ->line('Cuando tu solicitud sea aprobada, recibirás un correo confirmación con más información.')           
             ->line('¡Gracias!')
             ->salutation('Nos vemos,');
     }   
