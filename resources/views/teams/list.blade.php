@@ -20,7 +20,7 @@
                     <td>{{ $team->name }}</td>
                     <td>{{ $team->phone }}</td>
                     <td>{{ $team->email }}</td>
-                    <td>{{ $team->people->first()->name }}</td>
+                    <td>{{ $team->participants->first()->name }}</td>
                     @if($hide < 2)<td> {{ $team->confirmed_at }} </td>@endif
                     @if($hide < 1)<td> {{ $team->approved_at }} </td>@endif
                     <td>

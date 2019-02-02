@@ -29,50 +29,182 @@
                             @endif
                         </div>
 
-                        <div class="form-group">
-                            <input class="form-control input-lg @if($errors->has('email'))is-invalid @endif" type="email" name="email" id="email" max="255" placeholder="Correo electronico" value="{{ old('email') }}"/>
-                            @if($errors->has('email'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('email') }}
-                                </div>
-                            @endif
-                        </div>
-
-                        <div class="form-group">
-                            <input class="form-control input-lg @if($errors->has('phone'))is-invalid @endif" type="text" name="phone" id="phone" max="20" placeholder="Número telefónico" value="{{ old('phone') }}"/>
-                            @if($errors->has('phone'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('phone') }}
-                                </div>
-                            @endif
-                        </div>
-
                         <hr class="divider-w mt-10 mb-20">
                         <h4>Integrantes</h4>
                         
                         @for ($i = 1; $i <= 4; $i++)
-                            <div>
+                            <div class="row">
                                 <h5>@if($i==1){{'Capitán'}}@else{{'Integrante '.$i}}@endif</h5>
-                                <div class="form-group">
-                                    <input class="form-control input-lg @if($errors->has('names.'.$i))is-invalid @endif" type="text" name="names[{{$i}}]" max="100" placeholder="Nombre del capitán" value="{{ old('names.'.$i) }}"/>
-                                    @if($errors->has('names.'.$i))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('names.'.$i) }}
-                                        </div>
-                                    @endif
+                                @if($i==1)
+                                    <p>Este integrante será el contacto principal, a su correo se enviará toda la Información del registro.</p>
+                                @endif
+                                
+                                <!-- Name -->
+                                <div class="col-md-6" >
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-lg @if($errors->has('names.'.$i))is-invalid @endif"  
+                                            name="names[{{$i}}]" max="100" placeholder="Nombre(s)" value="{{ old('names.'.$i) }}"/>
+                                        @if($errors->has('names.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('names.'.$i) }}
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input class="form-control input-lg @if($errors->has('schools.'.$i))is-invalid @endif" type="text" name="schools[{{$i}}]" max="100" placeholder="Escuela" value="{{ old('schools.'.$i) }}"/>
-                                    @if($errors->has('schools.'.$i))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('schools.'.$i) }}
-                                        </div>
-                                    @endif
+
+                                <!-- Lastname -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-lg @if($errors->has('lastnames.'.$i))is-invalid @endif" 
+                                            name="lastnames[{{$i}}]" max="100" placeholder="Apellido(s)" value="{{ old('lastnames.'.$i) }}"/>
+                                        @if($errors->has('lastnames.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('lastnames.'.$i) }}
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
+
+                                <!-- Email -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-lg @if($errors->has('emails.'.$i))is-invalid @endif"  
+                                            name="emails[{{$i}}]" max="100" placeholder="Correo electrónico" value="{{ old('emails.'.$i) }}"/>
+                                        @if($errors->has('emails.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('emails.'.$i) }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Phone -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-lg mask @if($errors->has('phones.'.$i))is-invalid @endif" name="phones[{{$i}}]" 
+                                            max="100" placeholder="Teléfono" value="{{ old('phones.'.$i) }}" data-inputmask="'mask': '(999) 999 9999'"/>
+                                        @if($errors->has('phones.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('phones.'.$i) }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Major -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="major form-control input-lg @if($errors->has('majors.'.$i))is-invalid @endif"  
+                                            name="majors[{{$i}}]" max="100" placeholder="Programa" value="{{ old('majors.'.$i) }}"/>
+                                        @if($errors->has('majors.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('majors.'.$i) }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- School -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select id="{{ $i }}" class="school form-control input-lg @if($errors->has('schools.'.$i))is-invalid @endif" 
+                                            name="schools[{{$i}}]" value="{{ old('schools.'.$i) }}">
+                                            <option selected>Escuela</option>
+
+                                            @foreach(Config::get('enums.schools') as $school)
+                                                <option value="{{ $school }}">{{ $school }}</option>
+                                            @endforeach
+                                            <option value="other">Otra</option>
+                                        </select>
+                                        @if($errors->has('schools.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('schools.'.$i) }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Level -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select class="form-control input-lg @if($errors->has('levels.'.$i))is-invalid @endif" 
+                                            name="levels[{{$i}}]" id="levels[{{$i}}]"  value="{{ old('levels.'.$i) }}">
+
+                                            <option selected>Nivel máxmio de estudio</option>
+                                            @foreach(Config::get('enums.study_levels') as $level)
+                                                <option value="{{ $level }}">{{ $level }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('levels.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('levels.'.$i) }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Expected -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select class="form-control input-lg @if($errors->has('levels.'.$i))is-invalid @endif" 
+                                            name="levels[{{$i}}]" value="{{ old('levels.'.$i) }}">
+
+                                            <option selected>Año de graduación esperado</option>
+                                            @for ($j = 2019; $j <= 2029; $j++)
+                                            <option value="{{ $j }}">{{ $j }}</option>
+                                            @endfor
+                                        </select>
+                                        @if($errors->has('expecteds.'.$j))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('expecteds.'.$j) }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Gender -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select class="form-control input-lg @if($errors->has('genders.'.$i))is-invalid @endif" 
+                                            name="genders[{{$i}}]" value="{{ old('genders.'.$i) }}">
+                                            
+                                            <option selected>Género</option>
+                                            @foreach(Config::get('enums.genders') as $gender)
+                                                <option value="{{ $gender }}">{{ $gender }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('genders.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('genders.'.$i) }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Race -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select class="form-control input-lg @if($errors->has('races.'.$i))is-invalid @endif" 
+                                            name="races[{{$i}}]" max="100" placeholder="Género" value="{{ old('races.'.$i) }}">
+                                            <option selected>Raza o étnia</option>
+                                            @foreach(Config::get('enums.races') as $race)
+                                                <option value="{{ $race }}">{{ $race }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('races.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('races.'.$i) }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                
+                                <!-- Birthdates -->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Fecha de nacimiento</label>
-                                        <input class="form-control input-lg @if($errors->has('birthdates.'.$i))is-invalid @endif" type="date" name="birthdates[{{$i}}]" min="12/31/2002" placeholder="Fecha de nacimiento" value="{{ old('birthdates.'.$i) }}"/>
+                                        <input type="date" class="form-control input-lg @if($errors->has('birthdates.'.$i))is-invalid @endif"  
+                                            name="birthdates[{{$i}}]" min="12/31/2002" placeholder="Fecha de nacimiento" value="{{ old('birthdates.'.$i) }}"/>
                                         @if($errors->has('birthdates.'.$i))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('birthdates.'.$i) }}
@@ -80,11 +212,13 @@
                                         @endif
                                     </div>
                                 </div>
+                                
                                 <div class="col-md-6" style="margin-bottom: 25px;">
                                     <div class="form-group">
                                         <label>Documento que acreedita estatus de estudiante</label>
-                                        <input class="form-control input-lg @if($errors->has('files.'.$i))is-invalid @endif" type="file" name="files[{{$i}}]" min="12/31/2002" placeholder="Documento" value="{{ old('files.'.$i) }}"/>
-                                        <p>Archivo pdf de máximo 3MB, se recomienda creedencial escolar vigente.</p>
+                                        <input type="file" class="form-control input-lg @if($errors->has('files.'.$i))is-invalid @endif"  
+                                            name="files[{{$i}}]" min="12/31/2002" accept=".pdf" value="{{ old('files.'.$i) }}"/>
+                                        <p>Archivo .pdf de máximo 2MB, se recomienda creedencial escolar vigente.</p>
                                         @if($errors->has('files.'.$i))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('files.'.$i) }}
@@ -96,7 +230,7 @@
                         @endfor
 
                         <div class="form-group">
-                            <p>Una vez que te registres, revisa tu correo para confirmar tu cuenta.</p>
+                            <p>Una vez concluido el registro, revisa el correo del capitán para confirmer tu solicitud.</p>
                             <a class="btn btn-border-d" href="{{ route('index') }}">Regresar</a>
                             <input class="btn btn-b" type="submit" value="Enviar">
                         </div>
@@ -106,4 +240,44 @@
         </div>
     </section>
 </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+schoolFlag = false;
+majorFlag = false;
+
+$(document).ready(function(){
+  $(".mask").inputmask();
+
+  $(".school").change((e) => {
+    var id = e.target.getAttribute("id");
+    var value = $("#"+ id + " option:selected").val();
+    
+    if(value !== null && value === 'other') {
+        var school = prompt("Ingresa el nombre de tu escuela:", "");
+        if(id == 1) {
+            $(".school").append('<option value="'+school+'" selected>'+school+'</option>');
+        }
+        else {
+            $("#" + id).append('<option value="'+school+'" selected>'+school+'</option>');
+        }
+    }
+    else {
+        if(id == 1 && !flag) {
+            $(".school").val(value);
+            flag = true;
+        }
+    }
+  });
+
+  $(".major").change((e) => {
+      console.log(e.target.val);
+    if(!majorFlag) {
+        $(".major").val(e.target.value);
+        majorFlag = true;
+    }
+  });
+});
+</script>
 @endsection

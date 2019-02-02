@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use App\Person;
+use App\Participant;
 
 class Team extends Model
 {
     use Notifiable;
     
-    protected $fillable = ['name', 'phone', 'email'];
+    protected $fillable = ['name'];
     protected $dates = ['confirmed_at', 'approved_at'];
     protected $hidden = ['code'];
 
@@ -28,7 +28,7 @@ class Team extends Model
             'files.*' => 'required|file|mimes:pdf|max:3000'
     ];
 
-    public function people() {
-        return $this->hasMany(Person::class);
+    public function participants() {
+        return $this->hasMany(Participant::class);
     }
 }

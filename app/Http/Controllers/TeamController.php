@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Team;
-use App\Person;
+use App\Participant;
 use Validator;
 use Carbon\Carbon;
 use App\Notifications\EmailVerificationNotification;
@@ -50,7 +50,7 @@ class TeamController extends Controller
         $team = Team::create($request->all());
         $team->code = Uuid::uuid1();
         $team->save();
-        Person::createTeam($request, $team);
+        Participant::createTeam($request, $team);
 
         $team->notify(new EmailVerificationNotification($team));
 

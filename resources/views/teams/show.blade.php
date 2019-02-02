@@ -96,12 +96,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($team->people as $person)
+                        @foreach ($team->participants as $participant)
                             <tr>
-                                <td>{{ $person->name }}</td>
-                                <td>{{ $person->birthdate->age }}</td>
-                                <td>{{ $person->school }}</td>
-                                <td><a href="{{asset($person->file)}}" target="blank">click</a></td>
+                                <td>{{ $participant->name }}</td>
+                                <td>{{ $participant->birthdate->age }}</td>
+                                <td>{{ $participant->school }}</td>
+                                <td><a href="{{asset($participant->file)}}" target="blank">click</a></td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Person;
+use App\Participant;
 use App\Team;
 use Carbon\Carbon;
 use Ramsey\Uuid\Uuid;
@@ -24,8 +24,8 @@ class GeneralSeeder extends Seeder
             'approved_at' => Carbon::now()
         ]);
 
-        Person::create([
-            'name' => 'Person 1',
+        Participant::create([
+            'name' => 'Participant 1',
             'school' => 'Tec',
             'file' => 'assets/images/black.jpg',
             'birthdate' => Carbon::now()->subYears(19),
@@ -40,8 +40,8 @@ class GeneralSeeder extends Seeder
             'confirmed_at' => Carbon::now()
         ]);
 
-        Person::create([
-            'name' => 'Person 2',
+        Participant::create([
+            'name' => 'Participant 2',
             'school' => 'Tec',
             'file' => 'assets/images/black.jpg',
             'birthdate' => Carbon::now()->subYears(18),
@@ -55,8 +55,8 @@ class GeneralSeeder extends Seeder
             'code' => Uuid::uuid1(),
         ]);
 
-        Person::create([
-            'name' => 'Person 3',
+        Participant::create([
+            'name' => 'Participant 3',
             'school' => 'Tec',
             'file' => 'assets/images/black.jpg',
             'birthdate' => Carbon::now()->subYears(20),

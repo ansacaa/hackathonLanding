@@ -52,10 +52,12 @@
   <link href="{{ asset('assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/lib/magnific-popup/dist/magnific-popup.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/lib/simple-text-rotator/simpletextrotator.css') }}" rel="stylesheet">
+  
   <!-- Main stylesheet and color file-->
   <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
   <link id="color-scheme" href="{{ asset('assets/css/colors/default.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('assets/css/pnotify.custom.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('bootstrap-select.min.css') }}">
 </head>
 
 <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60" style="background-color: black;">
@@ -118,10 +120,14 @@
   <script src="{{ asset('assets/js/main.js') }}"></script>
   <script src="{{ asset('assets/js/map.js') }}"></script>
   <script src="{{ asset('assets/js/pnotify.custom.min.js') }}"></script>
+  <script src="{{ asset('assets/js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ asset('assets/js/jquery.inputmask.bundle.min.js') }}"></script>
 
   @include('sections.success')
   @include('sections.warning')
   @include('sections.error')
+
+  @yield('scripts')
 </body>
 
 </html>
