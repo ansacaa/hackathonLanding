@@ -27,7 +27,7 @@ class TeamController extends Controller
      * Displays the registration form only if the registration date has passed
      */
     public function create() {
-        if(Carbon::now()->lessThanOrEqualTo(new Carbon('2019-02-01')) && !Auth::check()) {
+        if(Carbon::now()->lessThanOrEqualTo(new Carbon('2019-02-01'))) {
             session()->flash('error' ,'Las inscripciones comienzan el primero de febrero de 2019.');
             return redirect(route('index'));
         }

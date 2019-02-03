@@ -13,12 +13,13 @@
         <div class="collapse navbar-collapse" id="custom-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#totop">Inicio</a></li>
-                <li><a class="section-scroll" href="@if(Route::currentRouteName() == 'index'){{'#inscriptions'}}@else{{ url('/#inscriptions') }}@endif">Inscripciones</a></li>
+                <li><a class="section-scroll" href="@if(Route::currentRouteName() == 'index'){{'#inscriptions'}}@else{{ url('/#inscriptions') }}@endif">Proceso</a></li>
                 <li><a class="section-scroll" href="@if(Route::currentRouteName() == 'index'){{'#event'}}@else{{ url('/#event') }}@endif">El evento</a></li>
                 <li><a class="section-scroll" href="@if(Route::currentRouteName() == 'index'){{'#info'}}@else{{ url('/#info') }}@endif">Información</a></li>
                 <li><a class="section-scroll" href="@if(Route::currentRouteName() == 'index'){{'#location'}}@else{{ url('/#location') }}@endif">Localización</a></li>
                 <li><a class="section-scroll" href="@if(Route::currentRouteName() == 'index'){{'#gallery'}}@else{{ url('/#gallery') }}@endif">Galería</a></li>
                 <li><a class="section-scroll" href="@if(Route::currentRouteName() == 'index'){{'#contacto'}}@else{{ url('/#contacto') }}@endif">Contacto</a></li>
+                <li><a class="section-scroll" href="{{ route('teams.create')}}">Inscripciones</a></li>
             </ul>
         </div>
     </div>
