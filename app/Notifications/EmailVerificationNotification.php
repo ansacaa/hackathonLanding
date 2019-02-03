@@ -45,7 +45,7 @@ class EmailVerificationNotification extends Notification
     {
         return (new MailMessage)
             ->subject('Verificación de correo')
-            ->from('hackpuebla@gmail.com')
+            ->from(App::environment('MAIL_USERNAME'), 'saitc.puebla@gmail.com')
             ->greeting('¡Hola!')
             ->line('Los orgaizadores del Hack Puebla 2019 te damos la bienvenida.')
             ->line('Recuerda estar al pendiente de información que publiquemos en <a href="https://www.facebook.com/SAITCPuebla/">Facebook</a>.')

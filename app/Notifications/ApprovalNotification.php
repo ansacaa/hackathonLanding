@@ -51,7 +51,7 @@ class ApprovalNotification extends Notification
 
         return (new MailMessage)
             ->subject('Solicitud aprobada')
-            ->from(App::environment('MAIL_USERNAME'), 'hackpuebla@gmail.com')
+            ->from(App::environment('MAIL_USERNAME'), 'saitc.puebla@gmail.com')
             ->greeting('¡Felicidades!')
             ->line('Tu solicitud de registro al Hack Puebla 2019 ha sido aprobada.')
             ->line('Nos vemos el 29 de marzo del presente año a las 9:00 am.')
