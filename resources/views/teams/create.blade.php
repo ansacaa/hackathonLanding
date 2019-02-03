@@ -277,8 +277,8 @@
                             <div class="form-group">
                                 <label class="form-check-label">Autorizo que compartan mi información de registro con fines de administración del evento, 
                                     clasificación, administración de la MLH, correos informativos pre- y post-evento y mensajes ocasionales sobre hackathones 
-                                    de acuero a la <a href="https://mlh.io/privacy"></a>Política de Privacidad de la MLH</a>. Además, acepto los términos de 
-                                    ambas, los <a href="https://mlh.io">Términos y Condiciones del Concurso de la MLH</a> y la <a href="https://mlh.io/privacy"></a>Política de Privacidad de la MLH</a>.
+                                    de acuero a la <a href="https://mlh.io/privacy">Política de Privacidad de la MLH</a>. Además, acepto los términos de 
+                                    ambas, los <a href="https://mlh.io">Términos y Condiciones del Concurso de la MLH</a> y la <a href="https://mlh.io/privacy">Política de Privacidad de la MLH</a>.
                                 </label>
                                 <input type="checkbox" class="@if($errors->has('terms'))is-invalid @endif" name="terms" value="true">
                                 
