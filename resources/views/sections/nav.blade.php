@@ -8,11 +8,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Hack Puebla</a>
+            <a class="navbar-brand" href="{{ route('index') }}">Hack Puebla</a>
         </div>
         <div class="collapse navbar-collapse" id="custom-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#totop">Inicio</a></li>
+                <li><a href="{{ route('index') }}#totop">Inicio</a></li>
                 <li><a class="section-scroll" href="@if(Route::currentRouteName() == 'index'){{'#inscriptions'}}@else{{ url('/#inscriptions') }}@endif">Proceso</a></li>
                 <li><a class="section-scroll" href="@if(Route::currentRouteName() == 'index'){{'#event'}}@else{{ url('/#event') }}@endif">El evento</a></li>
                 <li><a class="section-scroll" href="@if(Route::currentRouteName() == 'index'){{'#info'}}@else{{ url('/#info') }}@endif">Información</a></li>
