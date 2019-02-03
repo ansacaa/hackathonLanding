@@ -91,11 +91,48 @@
                                     </div>
                                 </div>
 
+                                <!-- Gender -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select class="form-control input-lg @if($errors->has('genders.'.$i))is-invalid @endif" 
+                                            name="genders[{{$i}}]" value="{{ old('genders.'.$i) }}">
+                                            
+                                            <option value="" selected>Género</option>
+                                            @foreach(Config::get('enums.genders') as $gender)
+                                                <option value="{{ $gender }}" @if(old('genders.'.$i) === $gender) selected @endif>{{ $gender }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('genders.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('genders.'.$i) }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Race -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select class="form-control input-lg @if($errors->has('races.'.$i))is-invalid @endif" 
+                                            name="races[{{$i}}]" max="100" placeholder="Género" value="{{ old('races.'.$i) }}">
+                                            <option value="" selected>Raza o étnia</option>
+                                            @foreach(Config::get('enums.races') as $race)
+                                                <option value="{{ $race }}" @if(old('races.'.$i) === $race) selected @endif>{{ $race }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('races.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('races.'.$i) }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
                                 <!-- Major -->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input type="text" class="major form-control input-lg @if($errors->has('majors.'.$i))is-invalid @endif"  
-                                            name="majors[{{$i}}]" max="100" placeholder="Programa" value="{{ old('majors.'.$i) }}"/>
+                                            name="majors[{{$i}}]" max="100" placeholder="Programa o  carrera" value="{{ old('majors.'.$i) }}"/>
                                         @if($errors->has('majors.'.$i))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('majors.'.$i) }}
@@ -109,11 +146,14 @@
                                     <div class="form-group">
                                         <select id="{{ $i }}" class="school form-control input-lg @if($errors->has('schools.'.$i))is-invalid @endif" 
                                             name="schools[{{$i}}]" value="{{ old('schools.'.$i) }}">
-                                            <option selected>Escuela</option>
+                                            <option value="" selected>Escuela</option>
 
                                             @foreach(Config::get('enums.schools') as $school)
                                                 <option value="{{ $school }}">{{ $school }}</option>
                                             @endforeach
+                                            @if(old('schools.'.$i))
+                                                <option value="{{ old('schools.'.$i) }}" selected>{{ old('schools.'.$i) }}</option>
+                                            @endif
                                             <option value="other">Otra</option>
                                         </select>
                                         @if($errors->has('schools.'.$i))
@@ -130,9 +170,9 @@
                                         <select class="form-control input-lg @if($errors->has('levels.'.$i))is-invalid @endif" 
                                             name="levels[{{$i}}]" id="levels[{{$i}}]"  value="{{ old('levels.'.$i) }}">
 
-                                            <option selected>Nivel máxmio de estudio</option>
+                                            <option value="" selected>Nivel máxmio de estudio</option>
                                             @foreach(Config::get('enums.study_levels') as $level)
-                                                <option value="{{ $level }}">{{ $level }}</option>
+                                                <option value="{{ $level }}" @if(old('levels.'.$i) === $level) selected @endif>{{ $level }}</option>
                                             @endforeach
                                         </select>
                                         @if($errors->has('levels.'.$i))
@@ -146,58 +186,23 @@
                                 <!-- Expected -->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <select class="form-control input-lg @if($errors->has('levels.'.$i))is-invalid @endif" 
-                                            name="levels[{{$i}}]" value="{{ old('levels.'.$i) }}">
+                                        <select class="form-control input-lg @if($errors->has('expecteds.'.$i))is-invalid @endif" 
+                                            name="expecteds[{{$i}}]" value="{{ old('expecteds.'.$i) }}">
 
-                                            <option selected>Año de graduación esperado</option>
+                                            <option value="" selected>Año de graduación esperado</option>
                                             @for ($j = 2019; $j <= 2029; $j++)
-                                            <option value="{{ $j }}">{{ $j }}</option>
+                                                <option value="{{ $j }}" @if((int)old('expecteds.'.$i) === $j) selected @endif>{{ $j }}</option>
                                             @endfor
                                         </select>
-                                        @if($errors->has('expecteds.'.$j))
+                                        @if($errors->has('expecteds.'.$i))
                                             <div class="invalid-feedback">
-                                                {{ $errors->first('expecteds.'.$j) }}
+                                                {{ $errors->first('expecteds.'.$i) }}
                                             </div>
                                         @endif
                                     </div>
                                 </div>
 
-                                <!-- Gender -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <select class="form-control input-lg @if($errors->has('genders.'.$i))is-invalid @endif" 
-                                            name="genders[{{$i}}]" value="{{ old('genders.'.$i) }}">
-                                            
-                                            <option selected>Género</option>
-                                            @foreach(Config::get('enums.genders') as $gender)
-                                                <option value="{{ $gender }}">{{ $gender }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if($errors->has('genders.'.$i))
-                                            <div class="invalid-feedback">
-                                                {{ $errors->first('genders.'.$i) }}
-                                            </div>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <!-- Race -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <select class="form-control input-lg @if($errors->has('races.'.$i))is-invalid @endif" 
-                                            name="races[{{$i}}]" max="100" placeholder="Género" value="{{ old('races.'.$i) }}">
-                                            <option selected>Raza o étnia</option>
-                                            @foreach(Config::get('enums.races') as $race)
-                                                <option value="{{ $race }}">{{ $race }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if($errors->has('races.'.$i))
-                                            <div class="invalid-feedback">
-                                                {{ $errors->first('races.'.$i) }}
-                                            </div>
-                                        @endif
-                                    </div>
-                                </div>
+                                
                                 
                                 <!-- Birthdates -->
                                 <div class="col-md-6">
@@ -212,13 +217,38 @@
                                         @endif
                                     </div>
                                 </div>
+
+                                <!-- Vegetarian -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>¿Requiere menú vegetariano?</label>
+                                        <br />
+                                        <input type="radio" name="vegetarians[{{$i}}]" value="1" @if(old('vegetarians.'.$i) == 1) checked @endif/> Sí
+                                        <br />
+                                        <input type="radio" name="vegetarians[{{$i}}]" value="0" @if(old('vegetarians.'.$i) == 0) checked @endif/> No
+                                        
+                                        @if($errors->has('vegetarians.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('vegetarians.'.$i) }}
+                                            </div>
+                                        @endif
+
+                                        @if($errors->has('vegetarians'))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('vegetarians') }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
                                 
-                                <div class="col-md-6" style="margin-bottom: 25px;">
+                                <!-- Document -->
+                                <div class="col-md-12" style="margin-bottom: 25px;">
                                     <div class="form-group">
                                         <label>Documento que acreedita estatus de estudiante</label>
                                         <input type="file" class="form-control input-lg @if($errors->has('files.'.$i))is-invalid @endif"  
                                             name="files[{{$i}}]" min="12/31/2002" accept=".pdf" value="{{ old('files.'.$i) }}"/>
                                         <p>Archivo .pdf de máximo 2MB, se recomienda creedencial escolar vigente.</p>
+                                        
                                         @if($errors->has('files.'.$i))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('files.'.$i) }}
@@ -228,6 +258,37 @@
                                 </div>
                             </div>
                         @endfor
+
+                        <!-- Conduct -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="checkbox" class="@if($errors->has('conduct'))is-invalid @endif" name="conduct" value="true">
+                                <label class="form-check-label">He leído y estoy de acuerdo con el <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">Código de Conducta de la MLH.</a></label>
+                                @if($errors->has('conduct'))
+                                    <div class="invalid-feedback">
+                                        Debes de aceptar el Código de Conducta de la MLH.
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Data Sharing -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-check-label">Autorizo que compartan mi información de registro con fines de administración del evento, 
+                                    clasificación, administración de la MLH, correos informativos pre- y post-evento y mensajes ocasionales sobre hackathones 
+                                    de acuero a la <a href="https://mlh.io/privacy"></a>Política de Privacidad de la MLH</a>. Además, acepto los términos de 
+                                    ambas, los y la <a href="https://mlh.io/privacy"></a>Política de Privacidad de la MLH</a>.
+                                </label>
+                                <input type="checkbox" class="@if($errors->has('terms'))is-invalid @endif" name="terms" value="true">
+                                
+                                @if($errors->has('terms'))
+                                    <div class="invalid-feedback">
+                                        Debes aceptar la política de privacidad de la MLH y los terminos y condiciones del concurso.
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <p>Una vez concluido el registro, revisa el correo del capitán para confirmer tu solicitud.</p>

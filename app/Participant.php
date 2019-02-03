@@ -8,17 +8,17 @@ use App\Team;
 
 class Participant extends Model
 {
-    protected $fillable = ['name', 'lastname', 'birthdate', 'school', 'phone', 'gender', 'race', 'major', 'expected', 'race', 'email',  'file', 'team_id'];
+    protected $fillable = ['name', 'lastname', 'birthdate', 'school', 'phone', 'gender', 'race', 'major', 'level', 'expected', 'race', 'email', 'vegetarian',  'file', 'team_id'];
     protected $dates = ['birthdate'];
 
     public function team() {
         return $this->belongsTo(Team::class);
     }
 
-    public static function createTeam(Request $request, Team $team) {
+    public static function createFromRequest(Request $request, Team $team) {
         $data = $request->all();
         for($i=1; $i<=4; $i++) {
-            Person::create([
+            Participant::create([
                 'name' => $data['names'][$i],
                 'lastname' => $data['lastnames'][$i],
                 'email' => $data['emails'][$i],
@@ -28,7 +28,9 @@ class Participant extends Model
                 'race' => $data['races'][$i],
                 'major' => $data['majors'][$i],
                 'level' => $data['levels'][$i],
+                'expected' => $data['expecteds'][$i],
                 'birthdate' => $data['birthdates'][$i],
+                'vegetarian' => $data['vegetarians'][$i],
                 'file' => str_replace('public', 'storage', $request->file('files')[$i]->store('public/docs')),
                 'team_id' => $team->id
             ]);

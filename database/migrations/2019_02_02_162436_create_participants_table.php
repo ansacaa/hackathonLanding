@@ -17,8 +17,8 @@ class CreateParticipantsTable extends Migration
             $table->increments('id');
             $table->string('name', 100);
             $table->string('lastname', 100);
-            $table->string('email', 100);
-            $table->string('phone', 100);
+            $table->string('email', 255);
+            $table->string('phone', 25);
             $table->string('school', 100);
             $table->string('major', 100);
             $table->string('level', 100);
@@ -26,6 +26,7 @@ class CreateParticipantsTable extends Migration
             $table->string('gender', 100);
             $table->string('race', 100);
             $table->date('birthdate');
+            $table->boolean('vegetarian');
             $table->string('file', 250);
             $table->timestamps();
 

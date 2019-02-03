@@ -40,17 +40,16 @@ class TeamController extends Controller
      * assigns a uuid to the team and sends email verification notification
      */
     public function store(Request $request) {
+        //dd($request->all());
         $validator = Validator::make($request->all(), Team::$rules);
-        
+        //dd($validator->errors());
         if($validator->fails()) {
             session()->flash('error', 'Revisa el formulario.');
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
         
-        $team = Team::create($request->all());
-        $team->code = Uuid::uuid1();
-        $team->save();
-        Participant::createTeam($request, $team);
+        $team = Team::createFromRequest($request);
+        Participant::createFromRequest($request, $team);
 
         $team->notify(new EmailVerificationNotification($team));
 
