@@ -55,8 +55,8 @@
       </div>
     </nav>
     </header>
-    <main role="main" class="container">
-        @include('sections.clock')
+    <main role="main" class="container">        
+        <div class="clock" style="margin: 0px auto 30px auto; max-width:90%; width: 650px;"></div> 
         @yield('content')
     </main>
 

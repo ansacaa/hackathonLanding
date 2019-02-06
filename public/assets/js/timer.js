@@ -5,6 +5,7 @@ if((".clock").length > 0) {
 
     $('.clock').FlipClock((theDay.valueOf() - today.valueOf())/1000, {
         clockFace: 'DailyCounter',
+        language: 'spanish',
         countdown: true
     });
 }
