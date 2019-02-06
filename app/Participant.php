@@ -8,7 +8,7 @@ use App\Team;
 
 class Participant extends Model
 {
-    protected $fillable = ['name', 'lastname', 'birthdate', 'school', 'phone', 'gender', 'race', 'major', 'level', 'expected', 'race', 'email', 'vegetarian',  'file', 'team_id'];
+    protected $fillable = ['name', 'lastname', 'birthdate', 'school', 'phone', 'gender', 'race', 'major', 'level', 'tshirt', 'expected', 'race', 'email', 'vegetarian',  'file', 'team_id'];
     protected $dates = ['birthdate'];
 
     public function team() {
@@ -31,6 +31,7 @@ class Participant extends Model
                 'expected' => $data['expecteds'][$i],
                 'birthdate' => $data['birthdates'][$i],
                 'vegetarian' => $data['vegetarians'][$i],
+                'tshirt' => $data['tshirts'][$i],
                 'file' => str_replace('public', 'storage', $request->file('files')[$i]->store('public/docs')),
                 'team_id' => $team->id
             ]);

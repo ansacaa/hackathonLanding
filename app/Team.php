@@ -33,6 +33,7 @@ class Team extends Model
         'races' => 'required|array|size:4',
         'birthdates' => 'required|array|size:4',
         'vegetarians' => 'required|array|size:4',
+        'tshirts' => 'required|array|size:4',
         'files' => 'required|array|size:4',
 
         'names.*' => 'required|string|max:100',
@@ -47,6 +48,7 @@ class Team extends Model
         'races.*' => 'required|string|max:100',
         'birthdates.*' => 'required|date|before:2005-01-01|after:1950-01-01',
         'vegetarians.*' => 'required|boolean',
+        'tshirts.*' => 'required|string|max:5',
         'files.*' => 'required|file|mimes:pdf|max:2048'
     ];
 

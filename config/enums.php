@@ -18,6 +18,12 @@ return [
         'Femenino',
         'Otro'
     ],
+    'tshirt_sizes' => [
+        'Ch',
+        'M',
+        'G',
+        'XG'
+    ],
     'races' => [
         'Hispánico o latino',
         'No hispánico o latino',

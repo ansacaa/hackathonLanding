@@ -202,22 +202,6 @@
                                     </div>
                                 </div>
 
-                                
-                                
-                                <!-- Birthdates -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Fecha de nacimiento</label>
-                                        <input type="date" class="form-control input-lg @if($errors->has('birthdates.'.$i))is-invalid @endif"  
-                                            name="birthdates[{{$i}}]" min="12/31/2002" placeholder="Fecha de nacimiento" value="{{ old('birthdates.'.$i) }}"/>
-                                        @if($errors->has('birthdates.'.$i))
-                                            <div class="invalid-feedback">
-                                                {{ $errors->first('birthdates.'.$i) }}
-                                            </div>
-                                        @endif
-                                    </div>
-                                </div>
-
                                 <!-- Vegetarian -->
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -233,25 +217,63 @@
                                             </div>
                                         @endif
 
-                                        @if($errors->has('vegetarians'))
+                                        @if($errors->has('vegetarians') && !old('vegetarians.'.$i))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('vegetarians') }}
                                             </div>
                                         @endif
                                     </div>
                                 </div>
+
+                                <!-- Tshirts -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Talla de playera</label>
+                                        
+                                        @foreach (Config::get('enums.tshirt_sizes') as $size)
+                                        <br />    
+                                        <input type="radio" name="tshirts[{{$i}}]" value="{{ $size }}" @if(old('tshirts.'.$i) == $size) checked @endif/> {{ $size }}
+                                        @endforeach
+                                        
+                                        @if($errors->has('tshirts.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('tshirts.'.$i) }}
+                                            </div>
+                                        @endif
+
+                                        @if($errors->has('tshirts') && !old('tshirts.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('tshirts') }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
                                 
                                 <!-- Document -->
-                                <div class="col-md-12" style="margin-bottom: 25px;">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Documento que acreedita estatus de estudiante</label>
                                         <input type="file" class="form-control input-lg @if($errors->has('files.'.$i))is-invalid @endif"  
                                             name="files[{{$i}}]" min="12/31/2002" accept=".pdf" value="{{ old('files.'.$i) }}"/>
-                                        <p>Archivo .pdf de máximo 2MB, se recomienda creedencial escolar vigente.</p>
                                         
                                         @if($errors->has('files.'.$i))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('files.'.$i) }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Birthdates -->
+                                <div class="col-md-6" style="margin-bottom: 25px;">
+                                    <div class="form-group">
+                                        <label>Fecha de nacimiento</label>
+                                        <input type="date" class="form-control input-lg @if($errors->has('birthdates.'.$i))is-invalid @endif"  
+                                            name="birthdates[{{$i}}]" min="12/31/2002" placeholder="Fecha de nacimiento" value="{{ old('birthdates.'.$i) }}"/>
+                                        
+                                        @if($errors->has('birthdates.'.$i))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('birthdates.'.$i) }}
                                             </div>
                                         @endif
                                     </div>

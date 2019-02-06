@@ -22,6 +22,7 @@ class CreateParticipantsTable extends Migration
             $table->string('school', 100);
             $table->string('major', 100);
             $table->string('level', 100);
+            $table->string('tshirt', 5);
             $table->integer('expected')->unsigned();
             $table->string('gender', 100);
             $table->string('race', 100);
