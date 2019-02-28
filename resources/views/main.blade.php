@@ -4,6 +4,8 @@
     @include('sections.hero')
     
     <div class="main">
+        @include('sections.sponsors')
+
         @include('sections.howto')       
         
         @include('sections.intro')
