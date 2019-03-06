@@ -8,6 +8,7 @@
                 <th scope="col">Teléfono</th>
                 <th scope="col">Correo</th>
                 <th scope="col">Capitán</th>
+                <th scope="col">Institución</th>
                 @if($hide < 2)<th scope="col">Confirmado</th>@endif
                 @if($hide < 1)<th scope="col">Aprovado</th>@endif
                 <th scope="col"></th>
@@ -21,6 +22,7 @@
                     <td>{{ $team->phone }}</td>
                     <td>{{ $team->email }}</td>
                     <td>{{ $team->participants->first()->name }}</td>
+                    <td>{{ $team->participants->first()->school }}</td>
                     @if($hide < 2)<td> {{ $team->confirmed_at }} </td>@endif
                     @if($hide < 1)<td> {{ $team->approved_at }} </td>@endif
                     <td>
