@@ -43,6 +43,16 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="content-box">
                         <div class="content-box-image">
+                            <a href="https://verato.com/">
+                                <img src="{{ asset('assets/images/VeratoLogo.jpeg') }}" alt="Verato"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="content-box">
+                        <div class="content-box-image">
                             <a href="https://www.bloomberg.com/">
                                 <img src="{{ asset('assets/images/bloomberg-logo.svg') }}" alt="Git Hub"/>
                             </a>
