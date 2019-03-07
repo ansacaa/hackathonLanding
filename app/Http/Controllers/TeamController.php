@@ -11,6 +11,7 @@ use App\Notifications\EmailVerificationNotification;
 use App\Notifications\ApprovalNotification;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class TeamController extends Controller
 {
@@ -40,21 +41,30 @@ class TeamController extends Controller
      * assigns a uuid to the team and sends email verification notification
      */
     public function store(Request $request) {
-        //dd($request->all());
-        $validator = Validator::make($request->all(), Team::$rules);
-        //dd($validator->errors());
-        if($validator->fails()) {
-            session()->flash('error', 'Revisa el formulario.');
-            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        try {
+            $validator = Validator::make($request->all(), Team::$rules);
+            
+            if($validator->fails()) {
+                session()->flash('error', 'Revisa el formulario.');
+                return redirect()->back()->withErrors($validator)->withInput($request->all());
+            }
+            
+            $team = Team::createFromRequest($request);
+            Participant::createFromRequest($request, $team);
+
+            $team->notify(new EmailVerificationNotification($team));
+
+            session()->flash('success', 'Te has registrado exitosamente. Busca en tu correo el mensaje de verificacion.');
+            return redirect(route('index'));
         }
-        
-        $team = Team::createFromRequest($request);
-        Participant::createFromRequest($request, $team);
+        catch(Exception $e) {
+            Log::error($e);
+            
+            if($team != null) $team->delete();
 
-        $team->notify(new EmailVerificationNotification($team));
-
-        session()->flash('success', 'Te has registrado exitosamente. Busca en tu correo el mensaje de verificacion.');
-        return redirect(route('index'));
+            session()->flash('error', 'Revisa el tamaño de los archivos.');
+            return redirect(route('index'));
+        }
     }
 
     /**
