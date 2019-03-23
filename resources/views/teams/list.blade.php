@@ -21,8 +21,8 @@
                     <td>{{ $team->name }}</td>
                     <td>{{ $team->phone }}</td>
                     <td>{{ $team->email }}</td>
-                    <td>{{ $team->participants->first()->name }}</td>
-                    <td>{{ $team->participants->first()->school }}</td>
+                    <td>@if($team->participants->first() != null){{ $team->participants->first()->name }}@endif</td>
+                    <td>@if($team->participants->first() != null){{ $team->participants->first()->school }}@endif</td>
                     @if($hide < 2)<td> {{ $team->confirmed_at }} </td>@endif
                     @if($hide < 1)<td> {{ $team->approved_at }} </td>@endif
                     <td>

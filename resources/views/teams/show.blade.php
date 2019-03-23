@@ -62,7 +62,7 @@
                         @endif
                         <tr>
                             <td>
-                                @if($team->assisted_at == null && $team->approved_at == null)
+                                @if($team->assisted_at == null)
                                 <a class="btn btn-danger" href="{{ route('teams.delete', $team->id) }}"
                                     onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
                                     Eliminar
