@@ -82,6 +82,14 @@
               <p>Facebook: <a href="https://www.facebook.com/SAITCPuebla/" target="_blank"> SAITC Puebla</a></p>
             </div>
           </div>
+
+          <div class="col-sm-3">
+            <div class="widget">
+              <h5 class="widget-title font-alt">Documentos</h5>
+              <p><a href="{{ asset('Reglamento.pdf') }}">Reglamento oficial</a></p>
+              <p><a href="https://calendar.google.com/calendar/embed?src=dh3r56b2ggfkr1t5328ra4unak%40group.calendar.google.com&ctz=America%2FMexico_City">Intinerario</a></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
