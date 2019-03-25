@@ -92,6 +92,7 @@
                             <th scope="col">Nombre</th>
                             <th scope="col">Edad</th>
                             <th scope="col">Institución</th>
+                            <th scope="col">Playera</th>
                             <th scope="col">Documento</th>
                         </tr>
                     </thead>
@@ -101,6 +102,7 @@
                                 <td>{{ $participant->name }}</td>
                                 <td>{{ $participant->birthdate->age }}</td>
                                 <td>{{ $participant->school }}</td>
+                                <td>{{ $participant->tshirt }}</td>
                                 <td><a href="{{asset($participant->file)}}" target="blank">click</a></td>
                             </tr>
                         @endforeach

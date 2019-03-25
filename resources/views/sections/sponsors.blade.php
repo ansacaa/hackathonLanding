@@ -20,7 +20,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="content-box">
                         <div class="content-box-image">
-                            <a href="https://verato.com/">
+                            <a href="https://www.t-systems.com/mx/es">
                                 <img src="{{ asset('assets/images/tsystems.png') }}" alt="Verato"/>
                             </a>
                         </div>
@@ -30,7 +30,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="content-box">
                         <div class="content-box-image">
-                            <a href="https://www.t-systems.com/mx/es">
+                            <a href="https://verato.com/">
                                 <img src="{{ asset('assets/images/VeratoLogo.jpeg') }}" alt="Verato"/>
                             </a>
                         </div>
