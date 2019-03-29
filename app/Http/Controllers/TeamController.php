@@ -148,6 +148,28 @@ class TeamController extends Controller
     }
 
     /**
+     * Manually checks in a team
+     */
+    public function manualCheckin(Team $team) {
+        $team->assisted_at = Carbon::now();
+        $team->save();
+
+        session()->flash('success', 'Se ha marcado tu asistencia.');
+        return redirect(route('teams.show', $team->id));
+    }
+
+    /**
+     * Checks out a team
+     */
+    public function checkout(Team $team) {
+        $team->assisted_at = null;
+        $team->save();
+
+        session()->flash('success', 'Se ha eliminado la asistencia.');
+        return redirect(route('teams.show', $team->id));
+    }
+
+    /**
      * Resends the email verification notification
      */
     public function resend(Team $team) {

@@ -59,7 +59,17 @@
                             <th scope="row">Ingreso</th>
                             <td>{{ $team->assisted_at }}</td>
                         </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td><a class="btn btn-danger" href="{{ route('teams.checkout', $team->id) }}">Cancelar ingreso</a></td>
+                        </tr>
+                        @else
+                        <tr>
+                            <th scope="row"></th>
+                            <td><a class="btn btn-success" href="{{ route('teams.manualCheckin', $team->id) }}">Ingresar</a></td>
+                        </tr>
                         @endif
+
                         <tr>
                             <td>
                                 @if($team->assisted_at == null)

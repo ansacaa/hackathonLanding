@@ -31,6 +31,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::put('/equipos/{team}/approve', 'TeamController@approve')->name('teams.approve');
     Route::get('/equipos/{team}/reenviar', 'TeamController@resend')->name('teams.resend');
     Route::get('/asistencia/{uuid}', 'TeamController@checkin')->name('teams.checkin');
+
+    Route::get('/equipos/{team}/checkin', 'TeamController@manualCheckin')->name('teams.manualCheckin');
+    Route::get('/equipos/{team}/checkout', 'TeamController@checkout')->name('teams.checkout');
 });
 
 Route::get('{any}', function($any) {
