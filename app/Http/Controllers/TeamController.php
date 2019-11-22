@@ -7,11 +7,12 @@ use App\Team;
 use App\Participant;
 use Validator;
 use Carbon\Carbon;
-use App\Notifications\EmailVerificationNotification;
 use App\Notifications\ApprovalNotification;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\VerifyMail;
 
 class TeamController extends Controller
 {
@@ -28,7 +29,7 @@ class TeamController extends Controller
      * Displays the registration form only if the registration date has passed
      */
     public function create() {
-        if(Carbon::now()->lessThanOrEqualTo(new Carbon('2019-02-01'))) {
+        if(Carbon::now()->lessThanOrEqualTo(new Carbon('2019-11-01'))) {
             session()->flash('error' ,'Las inscripciones comienzan el primero de febrero de 2019.');
             return redirect(route('index'));
         }
@@ -52,7 +53,7 @@ class TeamController extends Controller
             $team = Team::createFromRequest($request);
             Participant::createFromRequest($request, $team);
 
-            $team->notify(new EmailVerificationNotification($team));
+            Mail::to($team->email)->send(new VerifyMail($team));
 
             session()->flash('success', 'Te has registrado exitosamente. Busca en tu correo el mensaje de verificacion.');
             return redirect(route('index'));
@@ -122,7 +123,7 @@ class TeamController extends Controller
             $team->confirmed_at = Carbon::now();
             $team->save();
 
-            session()->flash('success', 'Tu correo ha sido verificado. Ahora nuestro equipo evisará tu solicitud.');
+            session()->flash('success', 'Tu correo ha sido verificado. Ahora nuestro equipo revisará tu solicitud.');
         }
 
         return redirect(route('index'));
