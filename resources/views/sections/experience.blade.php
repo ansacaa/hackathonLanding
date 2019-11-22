@@ -16,6 +16,7 @@
                     <li><a class="wow fadeInUp" href="#" data-filter=".hack1" data-wow-delay="0.2s">Hack Puebla</a></li>
                     <li><a class="wow fadeInUp" href="#" data-filter=".hack2" data-wow-delay="0.4s">Hack Puebla 2.0</a></li>
                     <li><a class="wow fadeInUp" href="#" data-filter=".hack3" data-wow-delay="0.6s">Hack Puebla 3.0</a></li>
+                    <li><a class="wow fadeInUp" href="#" data-filter=".hack4" data-wow-delay="0.8s">Hack Puebla 4.0</a></li>
                 </ul>
             </div>
         </div>
@@ -72,6 +73,42 @@
                 <div class="work-caption font-alt">
                     <h3 class="work-title">Casa llena</h3>
                     <div class="work-descr">Hack Puebla 3.0</div>
+                </div>
+            </a>
+        </li>
+        <li class="work-item hack4 webdesign">
+            <a href="#gallery">
+                <div class="work-image"><img src="{{ asset('assets/images/hack4-1.jpg') }}" alt="Portfolio Item" /></div>
+                <div class="work-caption font-alt">
+                    <h3 class="work-title">Ganadores</h3>
+                    <div class="work-descr">Hack Puebla 4.0</div>
+                </div>
+            </a>
+        </li>
+        <li class="work-item hack4 webdesign">
+            <a href="#gallery">
+                <div class="work-image"><img src="{{ asset('assets/images/hack4-2.jpg') }}" alt="Portfolio Item" /></div>
+                <div class="work-caption font-alt">
+                    <h3 class="work-title">Software + Hardware</h3>
+                    <div class="work-descr">Hack Puebla 4.0</div>
+                </div>
+            </a>
+        </li>
+        <li class="work-item hack4 webdesign">
+            <a href="#gallery">
+                <div class="work-image"><img src="{{ asset('assets/images/hack4-3.jpg') }}" alt="Portfolio Item" /></div>
+                <div class="work-caption font-alt">
+                    <h3 class="work-title">Presentación a jueces</h3>
+                    <div class="work-descr">Hack Puebla 4.0</div>
+                </div>
+            </a>
+        </li>
+        <li class="work-item hack4 webdesign">
+            <a href="#gallery">
+                <div class="work-image"><img src="{{ asset('assets/images/hack4-4.jpg') }}" alt="Portfolio Item" /></div>
+                <div class="work-caption font-alt">
+                    <h3 class="work-title">Casa llena</h3>
+                    <div class="work-descr">Hack Puebla 4.0</div>
                 </div>
             </a>
         </li>

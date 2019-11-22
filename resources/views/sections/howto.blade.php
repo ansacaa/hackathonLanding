@@ -29,7 +29,7 @@
 
             <ul class="price-details">
                 <li>
-                <p class="module-subtitle">Inscríbete a partir del 31 de enero.</p>
+                <p class="module-subtitle">Inscríbete a partir del 3 de diciembre.</p>
                 </li>
                 <li>Mantente al tanto de nuestras actualizaciones.</li>
             </ul>
@@ -59,7 +59,7 @@
 
             <ul class="price-details">
                 <li>
-                <p class="module-subtitle">¡Asiste al Hack Puebla el 29 de marzo y diviértete!</p>
+                <p class="module-subtitle">¡Asiste al Hack Puebla el 3 de abril y diviértete!</p>
                 </li>
                 <li>Habrá muchos premios y actividades.</li>
             </ul>

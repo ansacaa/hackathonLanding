@@ -9,7 +9,7 @@
     Document Title
     =============================================
     -->
-  <title>Hack Puebla 2019</title>
+  <title>Hack Puebla 2020</title>
   <!--  
     Favicons
     =============================================
@@ -77,9 +77,8 @@
             <div class="widget">
               <h5 class="widget-title font-alt">Contacto</h5>
               <p>Para cualquier duda o pregunta sobre el evento, envíanos un mensaje.</p>
-              <p>Teléfono: +52 222 455 5870</p>
-              <p>Correo: saitc.puebla@gmail.com</p>
-              <p>Facebook: <a href="https://www.facebook.com/SAITCPuebla/" target="_blank"> SAITC Puebla</a></p>
+              <p>Teléfono: +52 993 177 7278</p>
+              <p>Correo: hackpuebla5.0@gmail.com</p>
             </div>
           </div>
 
@@ -87,7 +86,7 @@
             <div class="widget">
               <h5 class="widget-title font-alt">Documentos</h5>
               <p><a href="{{ asset('Reglamento.pdf') }}">Reglamento oficial</a></p>
-              <p><a href="https://calendar.google.com/calendar/embed?src=dh3r56b2ggfkr1t5328ra4unak%40group.calendar.google.com&ctz=America%2FMexico_City">Intinerario</a></p>
+              <!-- <p><a href="https://calendar.google.com/calendar/embed?src=dh3r56b2ggfkr1t5328ra4unak%40group.calendar.google.com&ctz=America%2FMexico_City">Intinerario</a></p> -->
             </div>
           </div>
         </div>
@@ -99,7 +98,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <p class="copyright font-alt">&copy; 2019&nbsp;<a href="https://www.facebook.com/SAITCPuebla/" target="_blank">SAITCPuebla</a>, All Rights Reserved</p>
+            <p class="copyright font-alt">&copy; 2020&nbsp;Hack5.0, All Rights Reserved</p>
           </div>
           <div class="col-sm-6">
           </div>
