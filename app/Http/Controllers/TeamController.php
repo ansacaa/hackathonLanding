@@ -49,7 +49,7 @@ class TeamController extends Controller
                 session()->flash('error', 'Revisa el formulario.');
                 return redirect()->back()->withErrors($validator)->withInput($request->all());
             }
-            
+
             $team = Team::createFromRequest($request);
             Participant::createFromRequest($request, $team);
 
